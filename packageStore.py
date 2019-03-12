@@ -1,10 +1,41 @@
+import sys
+
+class Package:
+	def __init__(self, tracking, pacType, spec, mailingClass, weight, volume):
+		self._packageTracking = tracking
+		self._packageType = pacType
+		self._packageSpec = spec
+		self._packageMailingClass = mailingClass
+		self._packageWeight = weight
+		self._packageVolume = volume
+
+	@property
+	def packageTracking(self):
+		return self._packageTracking
+
+	@property
+	def packageType(self):
+		return self._packageType
+
+	@property
+	def packageSpec(self):
+		return self._packageSpec
+
+	@property
+	def packageMailingClass(self):
+		return self._packageMailingClass
+	
+	@property
+	def packageWeight(self):
+		return self._packageVolume
+	
+
+	 
 def main():
 	while True:
 		call_DisplayMenu()
 print("Exting program, GoodBye")
 		
-
-
 def call_DisplayMenu():
 		print("Welcome to the Package Store.")
 		print("1. Print out the Database")
@@ -39,11 +70,12 @@ def call_Switch(val):
 		print("option 5")
 	elif val == 6:
 		print("option 6")
+		sys.exit()
 	else:
 		print("Wrong option, please try again")
 
-
-	
+def show_package():
+	pass
 
 
 if __name__ == '__main__':
