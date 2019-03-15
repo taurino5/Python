@@ -64,19 +64,19 @@ def call_Validate():
 
 def call_Switch(val):
 	if val == 1:
-		print("printing out database")
+		print("Printing all packages in the database")
 		show_package(package_Database)
 	elif val == 2:
+		print("Adding a package to the database")
 		call_AddPackage()
-		print("option 2")
 	elif val == 3:
-		print("option 3")
+		print("Deleting package from the database")
 	elif val == 4:
-		print("option 4")
+		print("Searching for package in the database")
 	elif val == 5:
-		print("option 5")
+		print("Showing all packages with in wieght range")
 	elif val == 6:
-		print("option 6")
+		print("Saving data to the database and closing program")
 		sys.exit()
 	else:
 		print("Wrong option, please try again")
