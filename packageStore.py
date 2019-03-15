@@ -28,10 +28,16 @@ class Package:
 	@property
 	def packageWeight(self):
 		return self._packageVolume
-	
 
+	@property
+	def print_Database_perItem(self):
+		print("|    {} |  {} | ")
+		pass	
+
+package_Database = []	
 	 
 def main():
+	#package_Database = []
 	while True:
 		call_DisplayMenu()
 print("Exting program, GoodBye")
@@ -59,7 +65,8 @@ def call_Validate():
 
 def call_Switch(val):
 	if val == 1:
-		print("option 1")
+		print("printing out database")
+		show_package(package_Database)
 	elif val == 2:
 		print("option 2")
 	elif val == 3:
@@ -74,9 +81,18 @@ def call_Switch(val):
 	else:
 		print("Wrong option, please try again")
 
-def show_package():
+def show_package(package_Database):
+	call_printTopLable()
+	for x in  package_Database:
+		print()
 	pass
 
+	print("----------------------------------------------------------------------")
+
+def call_printTopLable():
+	print("----------------------------------------------------------------------")
+	print("|TRACKING #|    TYPE | SPECIFICATION |      CLASS |  WEIGHT | VOLUME |")
+	print("----------------------------------------------------------------------")
 
 if __name__ == '__main__':
 	main()
