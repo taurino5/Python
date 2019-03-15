@@ -29,10 +29,10 @@ class Package:
 	def packageWeight(self):
 		return self._packageVolume
 
-	@property
+	#@property
 	def print_Database_perItem(self):
-		print("|    {} |  {} | ")
-		pass	
+		print(" {} {} {} {} {}".format(self._packageTracking, self._packageType,
+			self._packageSpec,self._packageMailingClass,self._packageWeight, self._packageVolume))	
 
 package_Database = []	
 	 
@@ -60,7 +60,6 @@ def call_Validate():
 			loop = False
 		except ValueError:
 			print("Invalid Input, try again")
-
 	call_Switch(val)
 
 def call_Switch(val):
@@ -68,6 +67,7 @@ def call_Switch(val):
 		print("printing out database")
 		show_package(package_Database)
 	elif val == 2:
+		call_AddPackage()
 		print("option 2")
 	elif val == 3:
 		print("option 3")
@@ -85,8 +85,6 @@ def show_package(package_Database):
 	call_printTopLable()
 	for x in  package_Database:
 		print()
-	pass
-
 	print("----------------------------------------------------------------------")
 
 def call_printTopLable():
@@ -94,5 +92,17 @@ def call_printTopLable():
 	print("|TRACKING #|    TYPE | SPECIFICATION |      CLASS |  WEIGHT | VOLUME |")
 	print("----------------------------------------------------------------------")
 
-if __name__ == '__main__':
+def call_AddPackage():
+	trackingNum = input("Please enter the package tracking number: ")
+	packageType = input("Please enter the package type: ")
+	packageSpec = input("Please enter the package specification: ")
+	packageClass = input("Please enter the package class: ")
+	packageWeight = input("Please enter the package weight: ")
+	packageVolume = input("Please enter the package volume: ")
+	call_ValidatePackageInfo(trackingNum,packageType,packageClass,packageWeight,packageVolume)
+
+def call_ValidatePackageInfo(trackingNum,packageType,packageClass,packageWeight,packageVolume):
+	pass
+	
+if __name__ ==() '__main__':
 	main()
