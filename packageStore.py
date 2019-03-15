@@ -31,7 +31,7 @@ class Package:
 
 	#@property
 	def print_Database_perItem(self):
-		print(" {} {} {} {} {}".format(self._packageTracking, self._packageType,
+		print("| {0:>9}| {1:>8}| {2:>14}| {3:>11}| {4:>7} |{5:>6}|".format(self._packageTracking, self._packageType,
 			self._packageSpec,self._packageMailingClass,self._packageWeight, self._packageVolume))	
 
 package_Database = []	
@@ -83,8 +83,9 @@ def call_Switch(val):
 
 def show_package(package_Database):
 	call_printTopLable()
-	for x in  package_Database:
-		print()
+	for obj in package_Database:
+		obj.print_Database_perItem()
+		
 	print("----------------------------------------------------------------------")
 
 def call_printTopLable():
@@ -100,9 +101,11 @@ def call_AddPackage():
 	packageWeight = input("Please enter the package weight: ")
 	packageVolume = input("Please enter the package volume: ")
 	call_ValidatePackageInfo(trackingNum,packageType,packageClass,packageWeight,packageVolume)
+	package_Database.append(Package(trackingNum,packageType,packageSpec,packageClass,packageWeight,packageVolume))
 
 def call_ValidatePackageInfo(trackingNum,packageType,packageClass,packageWeight,packageVolume):
 	pass
 	
 if __name__ ==() '__main__':
 	main()
+#| {0:>9}| {1:>8}| {2:>14}| {3:>11}| {4:>7} |{5:>6}| format outputing
