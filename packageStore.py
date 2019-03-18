@@ -1,4 +1,6 @@
 import sys
+import pickle
+from pathlib import Path
 
 class Package:
 	def __init__(self, tracking, pacType, spec, mailingClass, weight, volume):
@@ -38,19 +40,21 @@ package_Database = []
 	 
 def main():
 	#package_Database = []
+	check_ifFileExist()
 	while True:
 		call_DisplayMenu()
 print("Exting program, GoodBye")
 		
 def call_DisplayMenu():
-		print("Welcome to the Package Store.")
-		print("1. Print out the Database")
-		print("2. Add add to the Database")
-		print("3. Delete from the Database")
-		print("4. Search for a package (given its tracking number)")
-		print("5. Show a list of packages withina given weight range")
-		print("6. Exit program, GoodBye")
-		call_Validate()
+
+	print("Welcome to the Package Store.")
+	print("1. Print out the Database")
+	print("2. Add add to the Database")
+	print("3. Delete from the Database")
+	print("4. Search for a package (given its tracking number)")
+	print("5. Show a list of packages withina given weight range")
+	print("6. Exit program, GoodBye")
+	call_Validate()
 
 def call_Validate():
 	loop = True
@@ -77,9 +81,34 @@ def call_Switch(val):
 		print("Showing all packages with in wieght range")
 	elif val == 6:
 		print("Saving data to the database and closing program")
+		pickle_stuff()
 		sys.exit()
 	else:
 		print("Wrong option, please try again")
+
+
+def check_ifFileExist():    
+    config = Path('C:\\Users\\ttostado\\Documents\\GitHub\\Python\\dbseri')
+    if config.is_file():
+        print("files exists, tranfering data to local db")
+        unpickle_stuff()
+
+
+def pickle_stuff():
+    print("starting pickling process")
+    dbfile = open('dbseri', 'ab')  
+    pickle.dump(package_Database, dbfile)
+    dbfile.close() 
+    print("pickling was successful")
+
+def unpickle_stuff():
+    print("starting to unpickle")
+    f = open('dbseri', 'rb')
+    package_Database = pickle.load(f)
+    print("unpickling was successful")
+    # print("printing info from database")
+    # for obj in db:
+    #      print(obj.name)
 
 def show_package(package_Database):
 	call_printTopLable()
@@ -106,6 +135,6 @@ def call_AddPackage():
 def call_ValidatePackageInfo(trackingNum,packageType,packageClass,packageWeight,packageVolume):
 	pass
 	
-if __name__ ==() '__main__':
+if __name__ == "__main__":
 	main()
 #| {0:>9}| {1:>8}| {2:>14}| {3:>11}| {4:>7} |{5:>6}| format outputing
