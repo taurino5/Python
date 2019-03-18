@@ -43,10 +43,8 @@ def main():
 	check_ifFileExist()
 	while True:
 		call_DisplayMenu()
-print("Exting program, GoodBye")
-		
-def call_DisplayMenu():
 
+def call_DisplayMenu():
 	print("Welcome to the Package Store.")
 	print("1. Print out the Database")
 	print("2. Add add to the Database")
@@ -86,13 +84,11 @@ def call_Switch(val):
 	else:
 		print("Wrong option, please try again")
 
-
 def check_ifFileExist():    
     config = Path('C:\\Users\\ttostado\\Documents\\GitHub\\Python\\dbseri')
     if config.is_file():
         print("files exists, tranfering data to local db")
         unpickle_stuff()
-
 
 def pickle_stuff():
     print("starting pickling process")
@@ -106,9 +102,9 @@ def unpickle_stuff():
     f = open('dbseri', 'rb')
     package_Database = pickle.load(f)
     print("unpickling was successful")
-    # print("printing info from database")
-    # for obj in db:
-    #      print(obj.name)
+    print("printing info from database")
+    for obj in db:
+        print(obj.print_Database_perItem())
 
 def show_package(package_Database):
 	call_printTopLable()
@@ -129,7 +125,7 @@ def call_AddPackage():
 	packageClass = input("Please enter the package class: ")
 	packageWeight = input("Please enter the package weight: ")
 	packageVolume = input("Please enter the package volume: ")
-	call_ValidatePackageInfo(trackingNum,packageType,packageClass,packageWeight,packageVolume)
+	#call_ValidatePackageInfo(trackingNum,packageType,packageClass,packageWeight,packageVolume)
 	package_Database.append(Package(trackingNum,packageType,packageSpec,packageClass,packageWeight,packageVolume))
 
 def call_ValidatePackageInfo(trackingNum,packageType,packageClass,packageWeight,packageVolume):
